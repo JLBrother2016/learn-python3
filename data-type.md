@@ -276,3 +276,84 @@ a = [1, 2, 3]  #[1, 2, 3]是list类型, 而变量a是没有类型, 它仅仅是�
 #### python3 标准库概览
 * [标准库概览](http://www.runoob.com/python3/python3-stdlib.html)
 * [python3 实例](http://www.runoob.com/python3/python3-examples.html)
+
+#### Python3 CGI编程
+* CGI(Common Gateway Interface), 通用网关接口, 它是一段程序, 运行在服务器上： HTTP服务器, 提供客户端HTML页面的接口.
+* 为了更好的了解CGI是如何工作的, 我们可以从在网页上点击一个链接或URL的流程:
+    - 使用浏览器访问URL并连接到HTTP web服务器
+    - web服务器接收到请求信息后会解析URL, 并查找访问文件在服务器上是否存在, 如果存在返回文件的内容, 否则返回错误信息.
+    - 浏览器从服务器上接收信息, 并显示接收的文件或者错误信息
+    - 用print 输出一个空行告诉服务器结束头部信息
+* HTTP头部： `hello.py`文件内容中的`Content-type:text/html`即为HTTP头部的一部分, 它会发送给浏览器告诉浏览器的内容类型， 格式如下: `HTTP: 字段名: 字段内容`
+* GET和POST方法
+    - 浏览器客户端通过两种方式向服务器传递信息, 这两种方法就是GET方法和POST方法
+    - 使用GET方法传输数据, GET方法发送编码后的用户信息到服务端, 数据信息包含在请求页面的URL上, 以`?`号分割
+    - `http://www.test.com/cgi-bin/hello.py?key1=value1&key2=value2`
+    - 有关GET请求的其他一些注释:
+        + GET请求可被释放
+        + GET请求保留在浏览器历史记录中
+        + GET请求可被收藏为书签
+        + GET请求不应在处理敏感数据时使用
+        + GET请求有长度限制
+        + GET请求只应当用于取回数据
+    - cgi-bin目录只能存放脚本文件
+    - 使用POST方法向服务器传递数据是更安全可靠的, 像一些敏感信息如用户密码等需要使用POST传输数据.
+    - 通过CGI程序传递Radio数据, Radio只向服务器传递一个数据
+    - 通过CGI程序传递Textarea数据, Textarea向服务器传递多行数据
+    - CGI中使用Cookie:在 http 协议一个很大的缺点就是不对用户身份的进行判断，这样给编程人员带来很大的不便， 而 cookie 功能的出现弥补了这个不足
+        + cookie 就是在客户访问脚本的同时，通过客户的浏览器，在客户硬盘上写入纪录数据 ，当下次客户访问脚本时取回数据信息，从而达到身份判别的功能，cookie 常用在身份校验中
+
+#### python 操作mysql数据库
+    - Python 标准数据库接口为 Python DB-API，Python DB-API为开发人员提供了数据库应用编程接口
+    - Python 数据库接口支持非常多的数据库
+        + GadFly
+        + mSQL
+        + MySQL
+        + PostgreSQL
+        + Microsoft SQL Server 2000
+        + Informix
+        + Interbase
+        + Oracle
+        + Sybase
+    - [Python数据库详解](http://www.runoob.com/python/python-mysql.html)
+        + 引入API模块
+        + 获取与数据库的链接
+        + 执行SQL语句和存储过程
+        + 关闭数据库链接
+
+#### Python 网络编程
+* python 提供了两个级别访问网络服务:
+    - 低级别的网络服务支持基本的Socket, 它提供了标准的BSD Sockets API, 可以访问底层操作系统Socket接口的全部方法
+    - 高级别的网络服务模块 SocketSever, 它提供了服务中心类, 可以简化网络服务的开发
+
+#### python SMTP发送邮件
+* SMTP(Simple Mail Transfer Protocol)即简单邮件传输协议, 它是一组用于由源地址到目的地址传送邮件的规则, 由它来传递信件的中转方式
+* Python中的smtplib对smtp协议进行了简单的封装
+* [SMTP传输详解](http://www.runoob.com/python/python-email.html)
+
+#### Python 多线程
+* 多线程类似域同时执行多个不同程序, 多线程运行有如下优点:
+    - 使用线程可以把占据长时间的程序中的任务放到后台去处理
+    - 用户界面可以更加吸引人, 这样比如用户点击了一个按钮去触发某些事件的处理, 可以弹出一个进度条来显示处理的进度
+    - 程序运行速度可能更快
+    - 在一些等待任务实现上如用户输入, 文件读写和网络收发数据等, 线程就比较有用了,在这种情况下我们可以释放一些珍贵的资源, 如内存占用等.
+    - 每个线程都有自己的一组CPU寄存器, 称为线程的上下文, 反映上次运行该线程的CPU寄存器的状态
+    - 如果多个线程共同对某个数据修改, 则可能出现不可预料的结果, 为了保证数据的正确性, 需要对多个线程进行同步
+* 线程优先级队列(Queue) -- 都实现了锁原语
+
+#### Python XML解析
+* 什么是XML: XML是指可扩展标记语言(eXtensible Markup Language)
+    - XML被设计用来传输和存储数据
+    - XML是一套定义语义标记的规则, 这些标记将文档分成许多不见并对这些部件加以标识
+    - 它也是元标记语言, 即定义了用于定义其他域特定领域有关的, 语义的, 结构化的标记语言的句法语言.
+
+#### Python GUI编程(Tkinter)
+* [python图形界面编程](http://www.runoob.com/python/python-gui-tkinter.html)
+* [python2 和 Python3 的区别](http://www.runoob.com/python/python-2x-3x.html)
+* [python IDE集成开发环境](http://www.runoob.com/python/python-ide.html)
+
+#### python JSON
+* python 编码和解码 JSON 对象
+    - JSON(JavaScript Object Notation)是一种轻量级的数据交换格式, 易于人阅读和编写
+* [Python的json库](http://www.runoob.com/python/python-json.html)
+
